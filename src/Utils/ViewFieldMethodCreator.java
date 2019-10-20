@@ -53,7 +53,7 @@ public class ViewFieldMethodCreator extends Simple {
         styleManager.optimizeImports(mFile);
         styleManager.shortenClassReferences(mClass);
         new ReformatCodeProcessor(mProject, mClass.getContainingFile(), null, false).runWithoutProgress();
-        Util.showPopupBalloon(mEditor, "生成成功", 5);
+        Util.showPopupBalloon(mEditor, "生成成功", 1);
     }
 
     /**
@@ -66,33 +66,33 @@ public class ViewFieldMethodCreator extends Simple {
                 continue;
             }
             // 设置变量名，获取text里面的内容
-            String text = element.getXml().getAttributeValue("android:text");
-            if (TextUtils.isEmpty(text)) {
-                // 如果是text为空，则获取hint里面的内容
-                text = element.getXml().getAttributeValue("android:hint");
-            }
-            // 如果是@string/app_name类似
-            if (!TextUtils.isEmpty(text) && text.contains("@string/")) {
-                text = text.replace("@string/", "");
-                // 获取strings.xml
-                PsiFile[] psiFiles = FilenameIndex.getFilesByName(mProject, "strings.xml", GlobalSearchScope.allScope(mProject));
-                if (psiFiles.length > 0) {
-                    for (PsiFile psiFile : psiFiles) {
-                        // 获取src\main\res\values下面的strings.xml文件
-                        String dirName = psiFile.getParent().toString();
-                        if (dirName.contains("src\\main\\res\\values")) {
-                            text = Util.getTextFromStringsXml(psiFile, text);
-                        }
-                    }
-                }
-            }
+//            String text = element.getXml().getAttributeValue("android:text");
+//            if (TextUtils.isEmpty(text)) {
+//                // 如果是text为空，则获取hint里面的内容
+//                text = element.getXml().getAttributeValue("android:hint");
+//            }
+//            // 如果是@string/app_name类似
+//            if (!TextUtils.isEmpty(text) && text.contains("@string/")) {
+//                text = text.replace("@string/", "");
+//                // 获取strings.xml
+//                PsiFile[] psiFiles = FilenameIndex.getFilesByName(mProject, "strings.xml", GlobalSearchScope.allScope(mProject));
+//                if (psiFiles.length > 0) {
+//                    for (PsiFile psiFile : psiFiles) {
+//                        // 获取src\main\res\values下面的strings.xml文件
+//                        String dirName = psiFile.getParent().toString();
+//                        if (dirName.contains("src\\main\\res\\values")) {
+//                            text = Util.getTextFromStringsXml(psiFile, text);
+//                        }
+//                    }
+//                }
+//            }
 
             StringBuilder fromText = new StringBuilder();
-            if (!TextUtils.isEmpty(text)) {
-                fromText.append("/****" + text + "****/\n");
-            }
+//            if (!TextUtils.isEmpty(text)) {
+//                fromText.append("/****" + text + "****/\n");
+//            }
             fromText.append("@ViewById(" + element.getFullID() + ")\n");
-            fromText.append("private ");
+//            fromText.append("private ");
             fromText.append(element.getName());
             fromText.append(" ");
             fromText.append(element.getFieldName());

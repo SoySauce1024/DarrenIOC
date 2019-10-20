@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.hc.darren.ioc</id>
   <name>DarrenIOC</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[
@@ -30,7 +30,7 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action id="DarrenIOCAction" class="action.DarrenIOC" text="DarrenIOC"
+    <action id="DarrenIOCAction" class="action.DarrenIOC" text="ViewByIdPlugin"
             description="DarrenIOCAction">
       <add-to-group group-id="CodeMenu" anchor="first"/>
       <add-to-group group-id="GenerateGroup" anchor="first"/>
