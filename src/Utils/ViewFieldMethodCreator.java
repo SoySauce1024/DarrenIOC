@@ -130,8 +130,9 @@ public class ViewFieldMethodCreator extends Simple {
     private void createClickMethod(String methodName, Element element) {
         // 拼接方法的字符串
         StringBuilder methodBuilder = new StringBuilder();
-        methodBuilder.append("@OnClick(" + element.getFullID() + ")\n");
-        methodBuilder.append("private void " + methodName + "(" + element.getName() + " " + getClickMethodName(element) + "){");
+        methodBuilder.append("@Click(" + element.getFullID() + ")\n");
+//        methodBuilder.append("protected void " + methodName + "(" + element.getName() + " " + getClickMethodName(element) + "){");
+        methodBuilder.append("protected void " + methodName + "(){");
         methodBuilder.append("\n}");
         // 创建OnClick方法
         mClass.add(mFactory.createMethodFromText(methodBuilder.toString(), mClass));
